@@ -1,6 +1,6 @@
 - name: apache base config
-  hosts: pc-192
-  user: ansible
+  hosts: web-server
+  user: user
   become: yes
 
   vars:

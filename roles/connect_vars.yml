@@ -1,0 +1,4 @@
+vCenter_host: 192.168.1.35
+vCenter_username: administrator@vsphere.local
+vCenter_password: Root123!
+vCenter_datacenter : Datacenter

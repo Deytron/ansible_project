@@ -1,0 +1,34 @@
+- name: Create the Web Server from RockyTemplate
+  vars_files:
+    - ../connect_vars.yml
+  hosts: localhost
+  gather_facts: no
+  tasks:
+  - name: Create the VM
+    vmware_guest:
+      hostname: '{{ vCenter_host }}'
+      username: '{{ vCenter_username }}'
+      password: '{{ vCenter_password }}'
+      validate_certs: False
+      name: WebServer
+      template: RockyTemplate
+      datacenter: '{{ vCenter_datacenter }}'
+      folder: /
+      state: poweredon
+      wait_for_ip_address: yes
+  - name: Set hostname
+    hostname:
+      name: web-server
+  - name: Add tags to a virtual machine
+    community.vmware.vmware_tag_manager:
+      hostname: '{{ vCenter_host }}'
+      username: '{{ vCenter_username }}'
+      password: '{{ vCenter_password }}'
+      tag_names:
+        - WebServer
+      object_name: WebServer
+      object_type: VirtualMachine
+      state: add
+    delegate_to: localhost
+
+    

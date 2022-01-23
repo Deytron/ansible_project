@@ -15,7 +15,7 @@
       datacenter: '{{ vCenter_datacenter }}'
       folder: /
       state: poweredon
-      wait_for_ip_address: yes
+      wait_for_ip_address: no
   - name: Set hostname
     hostname:
       name: web-server
@@ -25,6 +25,7 @@
       username: '{{ vCenter_username }}'
       password: '{{ vCenter_password }}'
       tag_names:
+        - Ansible_managed
         - WebServer
       object_name: WebServer
       object_type: VirtualMachine

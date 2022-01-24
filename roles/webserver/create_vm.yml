@@ -25,11 +25,12 @@
       username: '{{ vCenter_username }}'
       password: '{{ vCenter_password }}'
       tag_names:
-        - Ansible_managed
-        - WebServer
+        - Ansible_managed:Ansible
+        - Ansible_managed:WebServer
       object_name: WebServer
       object_type: VirtualMachine
       state: add
+      validate_certs: no
     delegate_to: localhost
 
     

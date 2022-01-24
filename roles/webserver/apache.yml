@@ -1,8 +1,7 @@
 - name: apache base config
-  hosts: web-server
-  user: user
+  hosts: WebServer
+  user: ansible
   become: yes
-
   tasks:
   - name: ensure apache is up to date
     yum:

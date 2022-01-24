@@ -18,7 +18,8 @@
       wait_for_ip_address: no
   - name: Set hostname
     hostname:
-      name: web-server
+      name: config.name
+    become: yes
   - name: Add tags to a virtual machine
     community.vmware.vmware_tag_manager:
       hostname: '{{ vCenter_host }}'

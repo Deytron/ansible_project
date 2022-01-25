@@ -1,10 +1,13 @@
 - name: apache base config
-  hosts: WebServer
+  hosts: AR_WebServer
   user: ansible
-  become: yes
+  become: True
   vars:
-    serveur_admin: localhost
+    serveur_admin: webserver
   tasks:
+  - name : Set hostname
+    hostname:
+      name: "{{ ansible_hostname }}"
   - name: ensure apache is up to date
     yum:
       name: 

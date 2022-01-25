@@ -1,6 +1,6 @@
 - name: Create the Web Server from RockyTemplate
   vars_files:
-    - ../connect_vars.yml
+    - /home/ansible/ansible_project/roles/connect_vars.yml
   hosts: localhost
   become: yes
   gather_facts: no
@@ -17,9 +17,6 @@
       folder: /
       state: poweredon
       wait_for_ip_address: no
-  - name: Set hostname
-    hostname:
-      name: webserver
   - name: Add tags to a virtual machine
     community.vmware.vmware_tag_manager:
       hostname: '{{ vCenter_host }}'
@@ -27,11 +24,10 @@
       password: '{{ vCenter_password }}'
       tag_names:
         - Ansible_managed:Ansible
-        - Ansible_managed:WebServer
+        - Ansible_managed:AR_WebServer
       object_name: WebServer
       object_type: VirtualMachine
       state: add
       validate_certs: no
-    delegate_to: localhost
 
     

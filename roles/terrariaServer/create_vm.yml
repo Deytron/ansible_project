@@ -1,6 +1,6 @@
 - name: Create the Terraria Server for the player to use from RockyTemplate
   vars_files:
-    - ../connect_vars.yml
+    - /home/ansible/ansible_project/roles/connect_vars.yml
   hosts: localhost
   gather_facts: no
   tasks:

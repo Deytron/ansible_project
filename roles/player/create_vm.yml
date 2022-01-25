@@ -1,6 +1,6 @@
 - name: Create the graphical machine for the player from UbuntuTemplate
   vars_files:
-    - ../connect_vars.yml
+    - /home/ansible/ansible_project/roles/connect_vars.yml
   hosts: localhost
   gather_facts: no
   tasks:

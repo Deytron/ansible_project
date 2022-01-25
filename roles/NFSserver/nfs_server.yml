@@ -1,0 +1,36 @@
+- name: Install NFS Server
+  hosts: NFSserver
+  user: ansible
+  become: yes
+  tasks:
+  - name: install nfs-utils
+    yum: 
+      name: nfs-utils 
+      state: latest
+  - name: enable rpcbind nfslock nfs
+    service:
+      name: rpcbind
+      enabled: yes
+    with_items:
+      - rpcbind
+      - nfslock
+      - nfs
+  - name: Create mnt directory for nfs
+    file:
+      path: /mnt/nfs_server
+      state: directory
+      mode: '0755'
+  - name: Copy exports file.
+    template:
+      src: exports.j2
+      dest: /etc/exports
+      owner: root
+      group: root
+      mode: 0644
+  - name: NFS apply change configure
+    systemd:
+      state: restarted
+      daemon_reload: yes
+      name: nfs-server
+  - name: Export FS
+    shell: exportfs -a

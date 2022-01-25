@@ -2,14 +2,17 @@
   hosts: WebServer
   user: ansible
   become: yes
+  vars:
+    serveur_admin: localhost
   tasks:
   - name: ensure apache is up to date
     yum:
-      name: httpd
+      name: 
+      - httpd
       state: latest
   - name: write the apache config file
     template:
-      src: templates/httpd.j2
+      src: httpd.j2
       dest: /etc/httpd/conf/httpd.conf
       backup: yes
     notify:

@@ -7,5 +7,13 @@ validate_certs: False
 with_tags: True
 hostnames:
 - config.name
+compose:
+  ansible_host: 'guest.ipAddress'
+  composed_var: 'config.name'
+  ansible_user: "'ansible'"
+  ansible_connection: "'ssh'"
 properties:
-- config.name
+- 'config.name'
+- 'config.guestId'
+- 'guest.ipAddress'
+- 'summary.runtime.powerState'

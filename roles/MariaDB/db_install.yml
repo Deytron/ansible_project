@@ -1,7 +1,8 @@
 - name: Install MariaDB on the server
   hosts: MariaDB
   user: ansible
-  become: yes
+  become: True
+  gather_facts: no
   vars:
     mysql_root_password: "root"
   tasks:

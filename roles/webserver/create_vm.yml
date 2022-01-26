@@ -2,6 +2,7 @@
   vars_files:
     - /home/ansible/ansible_project/roles/connect_vars.yml
   hosts: localhost
+  user: root
   become: yes
   gather_facts: no
   tasks:
@@ -23,7 +24,6 @@
       username: '{{ vCenter_username }}'
       password: '{{ vCenter_password }}'
       tag_names:
-        - Ansible_managed:Ansible
         - Ansible_managed:AR_WebServer
       object_name: WebServer
       object_type: VirtualMachine

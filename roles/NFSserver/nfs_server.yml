@@ -1,6 +1,6 @@
 - name: Install NFS Server
   hosts: NFSserver
-  user: ansible
+  user: root
   become: yes
   tasks:
   - name: install nfs-utils

@@ -16,19 +16,17 @@
       folder: /
       state: poweredon
       wait_for_ip_address: yes
-  - name: Set hostname
-    hostname:
-      name: terraria-server
   - name: Add tags to a virtual machine
     community.vmware.vmware_tag_manager:
       hostname: '{{ vCenter_host }}'
       username: '{{ vCenter_username }}'
       password: '{{ vCenter_password }}'
       tag_names:
-        - TerrariaServer
+        - Ansible_managed:AR_TerrariaServer
       object_name: TerrariaServer
       object_type: VirtualMachine
       state: add
+      validate_certs: no
     delegate_to: localhost
 
     

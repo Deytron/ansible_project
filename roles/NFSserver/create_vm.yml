@@ -23,8 +23,7 @@
       username: '{{ vCenter_username }}'
       password: '{{ vCenter_password }}'
       tag_names:
-        - Ansible_managed:Ansible
-        - Ansible_managed:NFSserver
+        - Ansible_managed:AR_NFSserver
       object_name: NFSserver
       object_type: VirtualMachine
       state: add

@@ -1,13 +1,11 @@
 - name: apache base config
   hosts: AR_WebServer
-  user: ansible
+  user: root
+  gather_facts: no
   become: True
   vars:
     serveur_admin: webserver
   tasks:
-  - name : Set hostname
-    hostname:
-      name: "{{ ansible_hostname }}"
   - name: ensure apache is up to date
     yum:
       name: 
@@ -24,6 +22,11 @@
     service:
       name: httpd
       state: started
+  - name: Stop service firewalld if running
+    systemd:
+      name: firewalld
+      state: stopped
+
 
   handlers:
     - name: restart apache

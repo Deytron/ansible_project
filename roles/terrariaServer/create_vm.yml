@@ -2,6 +2,8 @@
   vars_files:
     - /home/ansible/ansible_project/roles/connect_vars.yml
   hosts: localhost
+  user: root
+  become: yes
   gather_facts: no
   tasks:
   - name: Create the VM
@@ -15,7 +17,7 @@
       datacenter: '{{ vCenter_datacenter }}'
       folder: /
       state: poweredon
-      wait_for_ip_address: yes
+      wait_for_ip_address: no
   - name: Add tags to a virtual machine
     community.vmware.vmware_tag_manager:
       hostname: '{{ vCenter_host }}'

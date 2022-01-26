@@ -1,0 +1,22 @@
+- name: Install Terraria game
+  hosts: AR_TPlayer
+  user: root
+  gather_facts: no
+  become: True
+  tasks:
+  - name: Install dependencies
+    apt:
+      name: 
+      - libsdl2-2.0-0 
+      - libsdl2-gfx-1.0-0 
+      - libsdl2-image-2.0-0 
+      - libsdl2-mixer-2.0-0 
+      - libsdl2-net-2.0-0 
+      - libsdl2-ttf-2.0-0
+      - unzip
+      state: latest
+      update_cache: yes
+  - name: Unpack client zip
+     unarchive:
+      src: client.zip
+      dest: /opt/terraria_game

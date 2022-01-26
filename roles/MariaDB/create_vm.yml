@@ -28,6 +28,5 @@
       object_type: VirtualMachine
       state: add
       validate_certs: no
-    delegate_to: localhost
 
     

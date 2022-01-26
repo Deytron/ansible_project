@@ -3,25 +3,21 @@
   user: root
   gather_facts: no
   become: True
-  vars:
-    server_dl_link: "https://terraria.org/api/download/pc-dedicated-server/terraria-server-1432.zip"
   tasks:
+  - name: Set hostname
+    hostname:
+      name: terrariaserver
   - name: Install dependencies
     yum:
       name: 
       - wget
-      - temux
+      - tmux
       - unzip
       state: latest
-  - name: Get server zip
-    get_url:
-      url: '{{ server_dl_link }}'
-      dest: /opt/tServer.zip
-      mode: '0744'
   - name: Unzip the server
     unarchive:
-      src: /opt/tServer.zip
-      dest: /opt/tServer_unzipped
+      src: tServer.zip
+      remote_dest: /opt/tServer_unzipped
   - name: Make Server executable
     file:
       path: /opt/tServer_unzipped/1432/Linux/TerrariaServer.bin.x86_64

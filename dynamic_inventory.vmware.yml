@@ -6,9 +6,9 @@ password: Root123!
 validate_certs: False
 with_tags: True
 hostnames:
-- config.name
+- 'config.name'
 compose:
-  ansible_host: 'guest.hostName'
+  ansible_host: 'guest.ipAddress'
 keyed_groups:
 - key: tags
   separator: ''

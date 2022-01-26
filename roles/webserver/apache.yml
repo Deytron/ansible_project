@@ -6,6 +6,9 @@
   vars:
     serveur_admin: webserver
   tasks:
+  - name: Set hostname
+    hostname:
+      name: webserver
   - name: ensure apache is up to date
     yum:
       name: 
